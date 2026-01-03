@@ -59,7 +59,7 @@ Partial Class Form1
         btnevtregistration.Cursor = Cursors.Hand
         btnevtregistration.FlatStyle = FlatStyle.Flat
         btnevtregistration.ForeColor = SystemColors.InactiveBorder
-        btnevtregistration.Location = New Point(-3, 169)
+        btnevtregistration.Location = New Point(-4, 188)
         btnevtregistration.Name = "btnevtregistration"
         btnevtregistration.Size = New Size(200, 50)
         btnevtregistration.TabIndex = 2
@@ -73,7 +73,7 @@ Partial Class Form1
         btnlogin.Cursor = Cursors.Hand
         btnlogin.FlatStyle = FlatStyle.Flat
         btnlogin.ForeColor = SystemColors.InactiveBorder
-        btnlogin.Location = New Point(-3, 106)
+        btnlogin.Location = New Point(-2, 122)
         btnlogin.Name = "btnlogin"
         btnlogin.Size = New Size(200, 50)
         btnlogin.TabIndex = 1
