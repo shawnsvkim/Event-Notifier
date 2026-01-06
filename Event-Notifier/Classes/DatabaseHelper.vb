@@ -1,5 +1,6 @@
 ﻿Imports Npgsql
 Imports System.Configuration 
+Imports BCrypt.Net 'I want to add the logic that actually checks the password using BCrypt
 
 Public Class DatabaseHelper
     ' Variable to hold the connection string internally
@@ -31,4 +32,39 @@ Public Class DatabaseHelper
         End Try
     End Function
 
+' Here's the updated part of the code    
+' Logic to check if username and password are correct
+    Public Function ValidateAdmin(username As String, password As String) As Admin
+        Dim admin As Admin = Nothing
+
+        Using conn As NpgsqlConnection = GetConnection()
+            conn.Open()
+            ' parameterized query to prevent SQL Injections
+            Dim query As String = "SELECT AdminID, Username, PasswordHash, Email, FullName FROM Admins WHERE Username = @Username"
+            
+            Using cmd As New NpgsqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@Username", username)
+                
+                Using reader As NpgsqlDataReader = cmd.ExecuteReader()
+                    If reader.Read() Then
+                        ' Get the hash stored in the database
+                        Dim storedHash As String = reader("PasswordHash").ToString()
+                        
+                        ' Use BCrypt to verify the plain password against the hash
+                        If BCrypt.Net.BCrypt.Verify(password, storedHash) Then
+                            ' If match, create the Admin object
+                            admin = New Admin With {
+                                .AdminID = Convert.ToInt32(reader("AdminID")),
+                                .Username = reader("Username").ToString(),
+                                .Email = reader("Email").ToString(),
+                                .FullName = reader("FullName").ToString()
+                            }
+                        End If
+                    End If
+                End Using
+            End Using
+        End Using
+
+        Return admin ' Returns the object if success, or Nothing if failed
+    End Function
 End Class
