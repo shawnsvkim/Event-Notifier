@@ -3,7 +3,7 @@
     'Function to open view details page
     Private Sub OpenCategoryPage(categoryName As String)
         ' Create a new instance of your new form
-        Dim viewForm As New EventsDetailsView()
+        Dim viewForm As New EventDetailsView()
 
         ' Pass the specific category name to it
         viewForm.CurrentCategory = categoryName

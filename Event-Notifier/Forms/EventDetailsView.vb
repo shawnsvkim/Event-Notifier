@@ -1,7 +1,7 @@
 ﻿Imports Npgsql
 Imports System.Text
 
-Public Class EventsDetailsView
+Public Class EventDetailsView
 
     ' This variable receives the category name from dashboard
     Public CurrentCategory As String = ""
