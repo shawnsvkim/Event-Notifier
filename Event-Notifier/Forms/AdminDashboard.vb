@@ -40,9 +40,11 @@ Public Class AdminDashboard
 
     ' Button: Create Event
     Private Sub btnCreateEvent_Click(sender As Object, e As EventArgs) Handles btnCreateEvent.Click
-        ' We will uncomment this when we build the EventInputForm
-        ' Dim eventForm As New EventInputForm()
-        ' eventForm.ShowDialog()
+        ' We will uncomment this when we build the EventInputForm--> Have already uncommented
+         Dim eventForm As New EventInputForm()
+         eventForm.ShowDialog() ' Opens form and waits until it closes
+       ' Optional: Refresh stats after closing
+        LoadDashboardStats()
         MessageBox.Show("Event Creation Form coming soon!", "Placeholder") 
     End Sub
 ' LOGIC: Handles "View All Events" menu click
