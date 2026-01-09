@@ -1,4 +1,4 @@
-﻿Public Class UserDashboard
+Public Class UserDashboard
 
     'Function to open view details page
     Private Sub OpenCategoryPage(categoryName As String)
