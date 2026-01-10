@@ -24,6 +24,9 @@ Namespace My
     ' End Sub
 
     Partial Friend Class MyApplication
-
+' This explicitly tells the app to start with the Splash Screen
+        Protected Overrides Sub OnCreateMainForm()
+            Me.MainForm = Global.University_EventPlatform.SplashScreen
+        End Sub
     End Class
 End Namespace
