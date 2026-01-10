@@ -446,7 +446,7 @@ Public Class DatabaseHelper
                             Dim storedHash As String = reader("PasswordHash").ToString()
 
                             ' Verify password using BCrypt
-                            If (password.Equals(storedHash)) Then
+                            If BCrypt.Net.BCrypt.Verify(password, storedHash) Then
                                 Return New Admin With {
                                     .AdminID = reader.GetInt32(0),
                                     .Username = reader.GetString(1),
